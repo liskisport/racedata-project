@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+
+  server:
+    container_name: server
+    build: ./racedata-manager
+    links:
+      - db
+    ports:
+      - 5000:5000
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+        MYSQL_DATABASE: 'tantrix5_CompBase'
+        MYSQL_ROOT_PASSWORD: 'Daliluni5'
+    ports:
+    - 32000:3306
+
+  client:
+    container_name: client
+    build: ./racedata-client
+    volumes:
+      - '.:/racedata-client'
+      - '/racedata-client/node_modules'
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - 3000:3000
+    
