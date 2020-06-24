@@ -3,7 +3,7 @@ version: '3'
 services:
 
   server:
-    build: ./racedata-project/racedata-manager
+    build: ./racedata-manager
     links:
       - db
     ports:
@@ -20,13 +20,13 @@ services:
     - 32000:3306
 
   client:
-    build: ./racedata-project/racedata-client
+    build: ./racedata-client
     volumes:
       - '.:/racedata-client'
       - '/racedata-client/node_modules'
     environment:
       - CHOKIDAR_USEPOLLING=true
     ports:
-      - 3000:5000
+      - 3000:3000
     container_name: client
     
