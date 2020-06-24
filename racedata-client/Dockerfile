@@ -1,11 +1,11 @@
 # pull official base image
 FROM node:13.12.0-alpine
 
+# add `/racedata-client/node_modules/.bin` to $PATH
+ENV PATH /racedata-client/node_modules/.bin:$PATH
+
 # set working directory
 WORKDIR /racedata-client
-
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /racedata-client/node_modules/.bin:$PATH
 
 # install app dependencies
 COPY package*.json ./
@@ -16,4 +16,4 @@ RUN npm install
 COPY . ./
 
 # start app
-CMD ["npm", "start"]
+CMD npm run dev

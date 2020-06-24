@@ -3,12 +3,12 @@ version: '3'
 services:
 
   server:
-    container_name: server
-    build: ./racedata-manager
+    build: ./racedata-project/racedata-manager
     links:
       - db
     ports:
       - 5000:5000
+    container_name: server
 
   db:
     image: mysql:5.7
@@ -20,8 +20,7 @@ services:
     - 32000:3306
 
   client:
-    container_name: client
-    build: ./racedata-client
+    build: ./racedata-project/racedata-client
     volumes:
       - '.:/racedata-client'
       - '/racedata-client/node_modules'
@@ -29,4 +28,5 @@ services:
       - CHOKIDAR_USEPOLLING=true
     ports:
       - 3000:5000
+    container_name: client
     
