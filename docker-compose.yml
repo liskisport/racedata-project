@@ -8,7 +8,8 @@ services:
       - db
     ports:
       - 5000:5000
-    container_name: server
+    environment:
+      - APP_ENV=dev
 
   db:
     image: mysql:5.7
@@ -21,12 +22,10 @@ services:
 
   client:
     build: ./racedata-client
-    volumes:
-      - '.:/racedata-client'
-      - '/racedata-client/node_modules'
     environment:
-      - CHOKIDAR_USEPOLLING=true
+      - APP_ENV=dev
+      - APP_BACKEND_URL=server:5000
+      - APP_FRONTEND_PORT=40002
     ports:
       - 3000:3000
-    container_name: client
     
