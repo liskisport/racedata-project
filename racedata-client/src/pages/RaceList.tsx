@@ -33,5 +33,5 @@ const RaceList: FC = (): ReactElement => {
       </button>
     </div>
   );
-}
+};
 export default RaceList;

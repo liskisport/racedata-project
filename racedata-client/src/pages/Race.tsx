@@ -21,7 +21,7 @@ const Race: FC = (): ReactElement => {
         К списку соревнований
       </button>
     </div>
-  )
+  );
 };
 
 export default Race;
