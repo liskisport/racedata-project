@@ -1,0 +1,83 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "es2020": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 11,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "quotes": ["warn", "single"],
+        "no-console": "error",
+        "no-unreachable": "error",
+        "use-isnan": "warn",
+        "block-scoped-var": "error",
+        "default-case": "warn",
+        "dot-notation": "warn",
+        "eqeqeq": "error",
+        "no-alert": "error",
+        "no-caller": "error",
+        "no-empty-function": "warn",
+        "no-empty-pattern": "warn",
+        "no-eq-null": "error",
+        "no-eval": "error",
+        "no-implied-eval": "error",
+        "no-lone-blocks": "warn",
+        "no-loop-func": "error",
+        "no-multi-spaces": "warn",
+        "no-multi-str": "warn",
+        "no-new-wrappers": "error",
+        "no-param-reassign": "warn",
+        "no-redeclare": "warn",
+        "no-return-assign": "error",
+        "no-return-await": "error",
+        "no-unused-expressions": "warn",
+        "no-useless-call": "warn",
+        "no-useless-return": "error",
+        "require-await": "warn",
+        "wrap-iife": "warn",
+        "strict": "warn",
+        "no-undef": "warn",
+        "no-undefined": "warn",
+        "no-unused-labels": "warn",
+        "no-unused-vars": "warn",
+        "no-use-before-define": "error",
+        "array-element-newline": ["warn", "always"],
+        "block-spacing": ["warn", "always"],
+        "camelcase": ["error", { "properties": "never" }],
+        "eol-last": ["warn", "always"],
+        "func-call-spacing": ["warn", "never"],
+        "indent": ["error", 2],
+        "jsx-quotes": ["warn", "prefer-double"],
+        "key-spacing": ["error", { "beforeColon": false }],
+        "keyword-spacing": ["error", { "before": true, "after": true }],
+        "max-len": ["error", { "code": 120 }],
+        "new-cap": "warn",
+        "no-inline-comments": "warn",
+        "no-mixed-spaces-and-tabs": "warn",
+        "no-trailing-spaces": "error",
+        "no-whitespace-before-property": "error",
+        "semi": ["error", "always"],
+        "switch-colon-spacing": ["error", { "after": false, "before": true }],
+        "no-const-assign": "error",
+        "no-duplicate-imports": "error",
+        "no-useless-rename": "error",
+        "no-var": "error",
+        "prefer-const": "warn"
+    }
+}
