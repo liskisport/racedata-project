@@ -6,7 +6,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "precommit": "lint-staged",
     "eslint": "node_modules/.bin/eslint --fix --max-warnings 0 src/ pages/"
   },
   "dependencies": {
