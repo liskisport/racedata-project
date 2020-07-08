@@ -5,7 +5,7 @@ import ROUTES from '../constants/routes';
 
 const Main: FC = (): ReactElement => {
   const router = useRouter();
-  
+
   const handleRaceListRouteButtonClick = (event: MouseEvent): void => {
     event.preventDefault();
     router.push(ROUTES.RACE_LIST);

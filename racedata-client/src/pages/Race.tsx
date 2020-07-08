@@ -5,7 +5,7 @@ import ROUTES from '../constants/routes';
 
 const Race: FC = (): ReactElement => {
   const router = useRouter();
-
+  const n = null;
   const handleRaceListRouteButtonClick = (event: MouseEvent): void => {
     event.preventDefault();
     router.push(ROUTES.RACE_LIST);
@@ -21,7 +21,7 @@ const Race: FC = (): ReactElement => {
         К списку соревнований
       </button>
     </div>
-  )
+  );
 };
 
 export default Race;
