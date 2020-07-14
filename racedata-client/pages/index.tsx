@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 
-import Main from './main';
+import MainPage from '../src/pages/Main';
 
-const App: FC = (): JSX.Element => (
-  <div className="RaceManager">
-    <Main/>
+const Main: FC = (): JSX.Element => (
+  <div className="MainPage">
+    <MainPage />
   </div>
 );
 
-export default App;
+export default Main;

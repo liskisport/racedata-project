@@ -1,6 +1,8 @@
-import express, { Request, Response } from 'express';
-import next from 'next';
-import { parse } from 'url';
+const express = require("express");
+const next = require("next");
+const { Request, Response } = express;
+
+import addMocks from '../mocks/index';
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
@@ -10,19 +12,7 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
   const server = express();
 
-  server.get('/', (req: Request, res: Response) => {
-    const parsedUrl = parse(req.url, true);
-    const { pathname, query } = parsedUrl;
-
-    return app.render(req, res, pathname, query);
-  });
-
-  server.get('/main', (req: Request, res: Response) => {
-    const parsedUrl = parse(req.url, true);
-    const { pathname, query } = parsedUrl;
-
-    return app.render(req, res, pathname, query);
-  });
+  addMocks(server);
 
   server.all('*', (req: Request, res: Response) => {
     return handle(req, res);
