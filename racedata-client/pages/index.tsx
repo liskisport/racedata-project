@@ -1,8 +1,8 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC } from 'react';
 
 import Main from './main';
 
-const App: FC = (): ReactElement => (
+const App: FC = (): JSX.Element => (
   <div className="RaceManager">
     <Main/>
   </div>

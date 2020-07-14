@@ -1,8 +1,8 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC } from 'react';
 
 import Main from '../src/pages/Main';
 
-const MainPage: FC = (): ReactElement => (
+const MainPage: FC = (): JSX.Element => (
   <div className="MainPage">
     <Main/>
   </div>
