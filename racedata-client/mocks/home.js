@@ -1,7 +1,12 @@
 const homeMock = {
-  add: server => {
-    server.get('/', async (req, res) => {
-      res.json({ code: 'SUCCESS', data: 'homePage' });
+  add: function (server) {
+    return server.get('/api/home', async (req, res) => {
+      res.json({
+        code: 'SUCCESS',
+        data: {
+          page: 'Моки данных'
+        }
+      });
     });    
   }
 };
