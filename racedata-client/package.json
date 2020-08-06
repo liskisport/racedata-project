@@ -1,6 +1,13 @@
 {
   "name": "racedata-client",
   "version": "0.1.0",
+  "homepage": "/racedata-project",
+  "browserslist": [
+    ">0.3%",
+    "not ie 11",
+    "not dead",
+    "not op_mini all"
+  ],
   "private": true,
   "scripts": {
     "dev": "ts-node --project tsconfig.server.json server/index.ts",
@@ -14,6 +21,12 @@
     "cross-env": "^7.0.2",
     "express": "^4.17.1",
     "next": "9.4.4",
+    "next-compose-plugins": "^2.2.0",
+    "next-pcss": "^1.2.0",
+    "postcss-flexbugs-fixes": "^4.2.1",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.7.0",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
