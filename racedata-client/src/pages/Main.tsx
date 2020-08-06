@@ -27,7 +27,7 @@ const Main: FC = (): ReactElement => {
       >
         Список соревнований
       </button>
-      <div className="Main-data">{data && data.page}</div>
+      <div className="Main-data">{data?.page}</div>
     </div>
   );
 };
