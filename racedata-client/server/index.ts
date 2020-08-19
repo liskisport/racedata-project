@@ -1,8 +1,7 @@
 const express = require("express");
 const next = require("next");
-const { Request, Response } = express;
 
-import addMocks from '../mocks/index';
+import addMocks from '../mocks/js/index';
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';

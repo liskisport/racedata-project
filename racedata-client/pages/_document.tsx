@@ -16,7 +16,7 @@ class MyDocument extends Document {
 
   render(): JSX.Element {
     return (
-      <Html>
+      <Html className="racedata-project">
         <Head/>
         <body>
           <Main />

@@ -1,10 +1,17 @@
-import React, { FC, ReactElement, MouseEvent, useState, useEffect } from 'react';
+import React, { MouseEvent, useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { useRouter } from 'next/router';
 
-import { getMainData } from '../api/mainData';
+import { getMainData } from '../api/mainApi';
 import ROUTES from '../constants/routes';
 
-const Main: FC = (): ReactElement => {
+const mapStateToProps = (state) => ({
+  user: state.user.user
+});
+
+type StateProps = ReturnType<typeof mapStateToProps>;
+
+const Main = ({ user: { name, middlename } }: StateProps): JSX.Element => {
   const [data,
     setData] = useState<Record<string, unknown> | null>(null);
   const router = useRouter();
@@ -28,8 +35,9 @@ const Main: FC = (): ReactElement => {
         Список соревнований
       </button>
       <div className="Main-data">{data?.page}</div>
+      <div>Добро пожаловать, {name} {middlename}!</div>
     </div>
   );
 };
 
-export default Main;
+export default connect(mapStateToProps)(Main);
