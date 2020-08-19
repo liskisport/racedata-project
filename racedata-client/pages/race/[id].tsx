@@ -1,10 +1,9 @@
-import React, { FC } from 'react';
-
+import React from 'react';
 import Race from '../../src/pages/Race';
 
-const RacePage: FC = (): JSX.Element => (
+const RacePage = (): JSX.Element => (
   <div className="RacePage">
-    <Race/>
+    <Race />
   </div>
 );
 

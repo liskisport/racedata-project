@@ -1,3 +1,4 @@
-export const urlsApi = {
-  mainUrl: '/api/home'
-};
+export enum URLS_API {
+  MAIN = '/api/home',
+  USER = '/api/user',
+}
