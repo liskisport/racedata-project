@@ -1,27 +1,26 @@
-import { createStore, AnyAction } from 'redux';
+import { AnyAction, Action, configureStore } from '@reduxjs/toolkit';
 import { MakeStore, createWrapper, HYDRATE } from 'next-redux-wrapper';
+import { ThunkAction, ThunkDispatch, ThunkMiddleware } from 'redux-thunk';
 
-import { User } from '../@types/racedata/user';
+import middleware from './middleware';
+import rootReducer from './rootReducer';
 
-export interface State {
-  user: User;
-}
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppThunk = ThunkAction<void, RootState, null, Action<string>>;
+export type AppDispatch = ThunkDispatch<RootState, null, Action<string>>;
+export type AppMiddleware = ThunkMiddleware<RootState, Action<string>, null>;
 
-// create your reducer
-const reducer = (state: State = { user: null }, action: AnyAction) => {
-  switch (action.type) {
-  case HYDRATE :
-    // Attention! This will overwrite client state! Real apps should use proper reconciliation.
-    return {...state, user: action.payload };
-  case 'USER' :
-    return {...state, user: action.payload };
-  default :
-    return state;
-  }
-};
+const makeStore: MakeStore<RootState> = () => configureStore({
+  reducer: (state: RootState, action: AnyAction) => {
+    return (action.type === HYDRATE
+      ? { ...state, ...action.payload }
+      : rootReducer(state, action)
+    );
+  },
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(middleware),
+  devTools: true,
+});
 
-// create a makeStore function
-const makeStore: MakeStore<State> = () => createStore(reducer);
+export type Store = ReturnType<typeof makeStore>;
 
-// export an assembled wrapper
-export const wrapper = createWrapper<State>(makeStore);
+export const wrapper = createWrapper<RootState>(makeStore);

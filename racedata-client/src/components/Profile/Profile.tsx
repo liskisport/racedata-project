@@ -2,31 +2,36 @@ import React from 'react';
 import { connect } from 'react-redux';
 import cn from 'classnames';
 
+import { mapStateToProps, mapDispatchToProps, ReduxProps } from './reduxProps';
+
 import './Profile.pcss';
-
-const mapStateToProps = (state) => ({
-  user: state.user.user
-});
-
-type StateProps = ReturnType<typeof mapStateToProps>;
 
 type Props = {
   className: string;
 };
 
-const Profile = ({ user, className }: Props & StateProps): JSX.Element => {
-  const { name, surname, userId } = Object(user);
-  const userAuthorized = userId !== null;
+const Profile = ({ user, userRequest, className }: Props & ReduxProps): JSX.Element => {
+  const { name, surname } = Object(user);
+
+  const handleButtonLoginClick = () => {
+    userRequest({ login: 'login', password: 'password' });
+  };
+
   return (
     <div className={cn('Profile', className)}>
-      {!userAuthorized && (
-        <div className="Profile__unauthorized">Войти</div>
+      {!user && (
+        <button
+          className="Profile__buttonLogin"
+          onClick={handleButtonLoginClick}
+        >
+          Войти
+        </button>
       )}
-      {userAuthorized && (
-        <div className="Profile__authorized">{name} {surname}</div>
+      {user && (
+        <div className="Profile__userData">{name} {surname}</div>
       )}
     </div>
   );
 };
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

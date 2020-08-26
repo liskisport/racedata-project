@@ -2,16 +2,12 @@ import React, { MouseEvent, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useRouter } from 'next/router';
 
-import { getMainData } from '../api/mainApi';
-import ROUTES from '../constants/routes';
+import { getMainData } from '../../api/mainApi';
+import ROUTES from '../../constants/routes';
+import { mapStateToProps, ReduxProps } from './reduxProps';
 
-const mapStateToProps = (state) => ({
-  user: state.user.user
-});
-
-type StateProps = ReturnType<typeof mapStateToProps>;
-
-const Main = ({ user: { name, middlename } }: StateProps): JSX.Element => {
+const Main = ({ user }: ReduxProps): JSX.Element => {
+  const { name, middlename } = Object(user);
   const [data,
     setData] = useState<Record<string, unknown> | null>(null);
   const router = useRouter();
@@ -35,7 +31,7 @@ const Main = ({ user: { name, middlename } }: StateProps): JSX.Element => {
         Список соревнований
       </button>
       <div className="Main-data">{data?.page}</div>
-      <div>Добро пожаловать, {name} {middlename}!</div>
+      {user && <div>Добро пожаловать, {name} {middlename}!</div>}
     </div>
   );
 };
